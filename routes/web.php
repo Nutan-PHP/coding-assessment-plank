@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/quizzes', [\App\Http\Controllers\QuizController::class, 'index']);
+Route::get('/quiz/{id}', [\App\Http\Controllers\QuizController::class, 'show']);
+Route::post('/quiz', [\App\Http\Controllers\QuizController::class, 'store']);
+Route::post('/attempt', [\App\Http\Controllers\QuizAttemptController::class, 'store']);
+Route::delete('/quiz/{id}', [\App\Http\Controllers\QuizController::class, 'destroy']);
+
 Route::get('/articles/{id?}', [\App\Http\Controllers\ArticlesListing::class, 'get_the_articles']);
 Route::get('/author/{id}/articles', [\App\Http\Controllers\ArticlesListing::class, 'get_author_articles']);
 Route::post('/article', [\App\Http\Controllers\ArticlesListing::class, 'make_new_article']);
