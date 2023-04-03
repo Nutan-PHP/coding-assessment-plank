@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/articles/{id?}', [\App\Http\Controllers\ArticlesListing::class, 'get_the_articles']);
+Route::get('/author/{id}/articles', [\App\Http\Controllers\ArticlesListing::class, 'get_author_articles']);
+Route::post('/article', [\App\Http\Controllers\ArticlesListing::class, 'make_new_article']);
+Route::patch('/article/{id}', [\App\Http\Controllers\ArticlesListing::class, 'article_edits']);
+Route::delete('/article/{id}', [\App\Http\Controllers\ArticlesListing::class, 'delete_article']);
